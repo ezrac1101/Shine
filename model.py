@@ -27,7 +27,7 @@ if __name__ == '__main__':
     network.fc[1].weight = nn.Parameter(torch.FloatTensor([[1], [2], [3]]))
     network.fc[1].bias = nn.Parameter(torch.FloatTensor([0.001, -1, 0]))
 
-    x = torch.tensor([[0.0,0.0]])
+    x = torch.tensor([[0.1,0.2]])
     #  x = torch.randn(batch_size, input_dim, requires_grad=True)
     print(x)
     print(network(x))
