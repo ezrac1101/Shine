@@ -23,8 +23,8 @@ class Net(nn.Module):
 if __name__ == '__main__':
     network = Net()
     network.fc[0].weight = nn.Parameter(torch.FloatTensor([[0, 1]]))
-    network.fc[0].bias = nn.Parameter(torch.FloatTensor([0]))
-    network.fc[1].weight = nn.Parameter(torch.FloatTensor([[0], [0], [1]]))
+    network.fc[0].bias = nn.Parameter(torch.FloatTensor([0.3]))
+    network.fc[1].weight = nn.Parameter(torch.FloatTensor([[1], [2], [3]]))
     network.fc[1].bias = nn.Parameter(torch.FloatTensor([0.001, -1, 0]))
 
     x = torch.tensor([[0.0,0.0]])
