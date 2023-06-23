@@ -7,7 +7,11 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
 
+<<<<<<< HEAD
 Ezra is not handsome
+=======
+Ezra is fucking handsome. Say that again.
+>>>>>>> fb7827da0b889aa228bb9a6f48e0b93630c7f68a
 
 #Building the Network
 class Net(nn.Module):
