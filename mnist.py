@@ -98,6 +98,10 @@ def main():
     args = parser.parse_args()
     use_cuda = not args.no_cuda and torch.cuda.is_available()
     use_mps = not args.no_mps and torch.backends.mps.is_available()
+    print(use_cuda)
+    input()
+    print(args)
+    input()
 
     torch.manual_seed(args.seed)
 
