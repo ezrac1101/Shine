@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
+import matplotlib.pyplot as plt
+
 
 
 class Net(nn.Module):
@@ -29,13 +31,20 @@ def main():
     transform=transforms.Compose([transforms.ToTensor()])
     dataset1 = datasets.MNIST('../data', train=True, download=True, transform = transform)
     dataset2 = datasets.MNIST('../data', train=False, transform = transform)
-    train_loader = torch.utils.data.DataLoader(dataset1, batch_size = 64)
+    train_loader = torch.utils.data.DataLoader(dataset1, batch_size = 1000)
     test_loader = torch.utils.data.DataLoader(dataset2, batch_size = 1000)
 
     model = Net().to(device)
-    optimizer = optim.Adadelta(model.parameters(), lr=1.0)
+    for l in model.fc:
+        print("in: {}, out: {}".format(l.in_features, l.out_features))
+    print(len(model.fc))
+    learning_rate = 1
+    print (learning_rate)
+    optimizer = optim.Adadelta(model.parameters(), lr=learning_rate)
 
-    for epoch in range(1, 14 + 1):
+    num_epoch = 14
+    print (num_epoch)
+    for epoch in range(1, num_epoch):
         train(model, device, train_loader, optimizer, epoch)
         test(model, device, test_loader)
 
@@ -44,12 +53,16 @@ def train(model, device, train_loader, optimizer, epoch):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
+        print (data[0,0].shape)
+        plt.imshow(data[0,0])
+        plt.savefig('foo.png')
+        input()
         optimizer.zero_grad()
         output = model(data)
         loss = F.nll_loss(output, target)
         loss.backward()
         optimizer.step() #new set of gradients propogated back into each of the networks
-        if batch_idx % 10 == 0:
+        if batch_idx % 1 == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                 100. * batch_idx / len(train_loader), loss.item()))
@@ -73,4 +86,7 @@ def test(model, device, test_loader):
         100. * correct / len(test_loader.dataset)))
 
 if __name__ == '__main__':
+    import time
+    start = time.time()
     main()
+    print (time.time()- start)
