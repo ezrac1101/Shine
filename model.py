@@ -53,9 +53,8 @@ def train(model, device, train_loader, optimizer, epoch):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
-        print (data[0,0].shape)
-        plt.imshow(data[0,0])
-        plt.savefig('foo.png')
+        plt.imshow(data[4,0])
+        plt.savefig("image4.png")
         input()
         optimizer.zero_grad()
         output = model(data)
