@@ -32,3 +32,4 @@ plt.ylabel('Time(seconds)', fontsize=44, fontweight='bold')
 # plt.show()
 plt.savefig("test2.png", bbox_inches='tight')
 
+
