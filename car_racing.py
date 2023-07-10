@@ -20,7 +20,7 @@ if __name__ == "__main__":
     import pygame
     from pygame import gfxdraw
 
-    env = gym.make("CarRacing-v2")
+    env = gym.make("CarRacing-v2", render_mode="human")
 
     # normal reset, this changes the colour scheme by default
     env.reset()
