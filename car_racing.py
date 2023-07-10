@@ -1,7 +1,26 @@
 
 if __name__ == "__main__":
     import gym
-    env = gym.make("CarRacing-v1")
+    import numpy as np
+    import pygame
+
+    import math
+    from typing import Optional, Union
+
+    import numpy as np
+
+    import gymnasium as gym
+    from gymnasium import spaces
+    from gymnasium.envs.box2d.car_dynamics import Car
+    from gymnasium.error import DependencyNotInstalled, InvalidAction
+    from gymnasium.utils import EzPickle
+
+    import Box2D
+    from Box2D.b2 import contactListener, fixtureDef, polygonShape
+    import pygame
+    from pygame import gfxdraw
+
+    env = gym.make("CarRacing-v2")
 
     # normal reset, this changes the colour scheme by default
     env.reset()
@@ -38,7 +57,6 @@ if __name__ == "__main__":
             if event.type == pygame.QUIT:
                 quit = True
 
-    env = CarRacing(render_mode="human")
 
     quit = False
     while not quit:
