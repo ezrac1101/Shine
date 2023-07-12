@@ -21,8 +21,13 @@ model = DQN("MlpPolicy", env, verbose=1, policy_kwargs = {'net_arch': args.netwo
 #  model = DQN("CnnPolicy", env, verbose=1)
 
 
-num_step = 2e3
-#  num_step = 2e7
+num_step = 1e2
+#  num_step = 1e5
+#  num_step = 5e5
+#  num_step = 1e6
+#  num_step = 5e6
+#  num_step = 1e7
+
 model.learn(int(num_step))
 
 traced_script_module = torch.nn.Sequential(model.q_net.features_extractor, model.q_net.q_net).cpu()

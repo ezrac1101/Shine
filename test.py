@@ -97,6 +97,6 @@ for n in network_name:
         output = "{}".format(f[:-3])
 
         np.random.seed(0)
-        _, run_time = test_dqn(model, 100, False)
+        _, run_time = test_dqn(model, 3, True)
 
 env.close()
