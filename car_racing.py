@@ -992,6 +992,7 @@ if __name__ == "__main__":
     mode = "state"
     env = CarRacing(render_mode = mode, continuous = False, shape = "random")
 
+    max_horizon = 3000
     quit = False
     while not quit:
         env.reset()
@@ -1004,9 +1005,9 @@ if __name__ == "__main__":
             register_input()
             s, r, terminated, truncated, info = env.step(a[0])
             total_reward += r
-            if steps % 200 == 0 or terminated or truncated:
-                print("\naction " + str([f"{x:+0.2f}" for x in a]))
-                print(f"step {steps} total_reward {total_reward:+0.2f}")
+            if terminated or truncated or steps >= max_horizon:
+                print("step: {}, total_reward {:.2f}".format(steps, total_reward))
+                break
             steps += 1
             if terminated or truncated or restart or quit:
                 break
