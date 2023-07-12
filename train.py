@@ -8,7 +8,7 @@ from car_racing import CarRacing
 
 parser = argparse.ArgumentParser(description='PyTorch RL')
 parser.add_argument('--network-arch', type=int, nargs = "*", default=[32, 32], metavar='NN',
-                    help='input batch size for training (default: [32, 32])')
+                    help='neural network model size for training (default: [32, 32])')
 args = parser.parse_args()
 print("network architecture: {}".format(args.network_arch))
 
@@ -20,10 +20,6 @@ state = env.reset()
 model = DQN("MlpPolicy", env, verbose=1, policy_kwargs = {'net_arch': args.network_arch})
 #  model = DQN("CnnPolicy", env, verbose=1)
 
-#  m = model.get_parameters()
-#  for k,i in m['policy'].items():
-#      print(k, i.shape)
-#  input()
 
 num_step = 2e3
 #  num_step = 2e7
