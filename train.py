@@ -7,8 +7,8 @@ from car_racing import CarRacing
 
 
 parser = argparse.ArgumentParser(description='PyTorch RL')
-parser.add_argument('--network-arch', type=int, nargs = "*", default=[32, 32], metavar='NN',
-                    help='neural network model size for training (default: [32, 32])')
+parser.add_argument('--network-arch', type=int, nargs = "*", default=[256, 256], metavar='NN',
+                    help='neural network model size for training (default: [256, 256])')
 args = parser.parse_args()
 print("network architecture: {}".format(args.network_arch))
 
