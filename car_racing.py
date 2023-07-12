@@ -1,4 +1,5 @@
-
+import os
+#os.environ["SDL_VIDEODRIVER"] = "dummy"
 if __name__ == "__main__":
     import gym
     import numpy as np
