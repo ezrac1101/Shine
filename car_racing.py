@@ -653,6 +653,7 @@ class CarRacing(gym.Env, EzPickle):
             if abs(x) > PLAYFIELD or abs(y) > PLAYFIELD:
                 terminated = True
                 step_reward = -100
+        print("reward: {:.2f}".format(self.reward))
 
         return self.state, step_reward, terminated, truncated, {}
 
@@ -884,6 +885,7 @@ class CarRacing(gym.Env, EzPickle):
             np.square(self.car.hull.linearVelocity[0])
             + np.square(self.car.hull.linearVelocity[1])
         )
+        print("velocity: {:.2f}, ".format(linear_velocity), end = '')
         #  angular_velocity = self.car.hull.angularVelocity
         #  wheel_omega = np.array([w.omega for w in self.car.wheels]).mean()
         #  wheel_angle = np.array([w.joint.angle for w in self.car.wheels]).mean()
