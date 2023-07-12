@@ -8,7 +8,7 @@ import torch
 network_name = []
 
 #  network_name.extend(["16_32"])
-network_name.extend(["32_32"])
+network_name.extend(["256_256"])
 #  network_name.extend(["32_64"])
 #  network_name.extend(["64_64"])
 #  network_name.extend(["128_128"])
