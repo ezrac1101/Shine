@@ -8,7 +8,7 @@ import torch
 network_name = []
 
 #  network_name.extend(["16_32"])
-network_name.extend(["256_256"])
+network_name.extend(["3_256_256_5_1000.0"])
 #  network_name.extend(["32_64"])
 #  network_name.extend(["64_64"])
 #  network_name.extend(["128_128"])
@@ -88,7 +88,7 @@ for n in network_name:
     print("model name: {}".format(n))
     file_name = []
     #  nn
-    file_name.append("model_3_{}_5.pt".format(n))
+    file_name.append("model_{}.pt".format(n))
 
     for f in file_name:
         print("  nn: {}".format(f))
