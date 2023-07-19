@@ -7,13 +7,9 @@ import torch
 
 network_name = []
 
-#  network_name.extend(["16_32"])
-network_name.extend(["3_256_256_5_1000.0"])
-#  network_name.extend(["32_64"])
-#  network_name.extend(["64_64"])
-#  network_name.extend(["128_128"])
-#  network_name.extend(["32_32_32"])
-#  network_name.extend(["64_64_64"])
+
+network_name.extend(["3_256_256_256_256_256_5_1000000.0"])
+
 
 
 from car_racing import CarRacing
@@ -97,6 +93,7 @@ for n in network_name:
         output = "{}".format(f[:-3])
 
         np.random.seed(0)
-        _, run_time = test_dqn(model, 3, True)
+        # _, run_time = test_dqn(model, 3, True)
+        _, run_time = test_dqn(model, 100, False)
 
 env.close()
