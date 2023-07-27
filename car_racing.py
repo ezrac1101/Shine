@@ -53,8 +53,8 @@ LINEAR_VELOCITY_BOUND = 100.0
 #  WHEEL_ANGLE_BOUND = np.pi
 #  BOUND = np.array([ANGLE_BOUND, LINEAR_VELOCITY_BOUND, ANGULAR_VELOCITY_BOUND, WHEEL_OMEGA_BOUND, WHEEL_ANGLE_BOUND], dtype=np.float64)
 BOUND = np.array([LINEAR_VELOCITY_BOUND], dtype=np.float64)
-TRACK_NUM = 2
-TRACK_STEP = 2
+TILE_NUM = 1
+TILE_STEP = 2
 
 class FrictionDetector(contactListener):
     def __init__(self, env, lap_complete_percent):
@@ -276,8 +276,8 @@ class CarRacing(gym.Env, EzPickle):
                 low=0, high=255, shape=(STATE_H, STATE_W, 3), dtype=np.uint8
             )
         elif render_mode == "state":
-            #  increment state are 2 for current tile and 3 for tile_idx + TRACK_NUM
-            self.observation_space = spaces.Box( low=-np.ones(len(BOUND) + TRACK_NUM * 2), high=np.ones(len(BOUND) + TRACK_NUM * 2), dtype=np.float64)
+            #  increment state are 2 for current tile and 3 for tile_idx + TILE_NUM
+            self.observation_space = spaces.Box( low=-np.ones(len(BOUND) + TILE_NUM * 2), high=np.ones(len(BOUND) + TILE_NUM * 2), dtype=np.float64)
         else: assert(False)
 
         self.render_mode = render_mode
@@ -906,8 +906,8 @@ class CarRacing(gym.Env, EzPickle):
 
         idx = self.tile_idx.pop()
         self.tile_idx.add(idx)
-        track = self.track[idx + TRACK_STEP: min(idx + TRACK_NUM + TRACK_STEP, len(self.track))] + self.track[max(idx + TRACK_STEP - len(self.track), 0): max(idx + TRACK_NUM + TRACK_STEP - len(self.track), 0)]
-        assert(len(track) == TRACK_NUM)
+        track = self.track[idx + TILE_STEP: min(idx + TILE_NUM + TILE_STEP, len(self.track))] + self.track[max(idx + TILE_STEP - len(self.track), 0): max(idx + TILE_NUM + TILE_STEP - len(self.track), 0)]
+        assert(len(track) == TILE_NUM)
 
         #  track = np.array([[t[1]] for t in track])
         #  track[:, 0] = track[:, 0] + angle

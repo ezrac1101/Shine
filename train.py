@@ -23,10 +23,10 @@ model = DQN("MlpPolicy", env, verbose=1, policy_kwargs = {'net_arch': args.netwo
 
 #  num_step = 1e3
 #  num_step = 1e4
-#  num_step = 1e5
-num_step = 1e6
-# num_step = 1e7
-print(num_step)
+num_step = 1e5
+#  num_step = 1e6
+#  num_step = 2e6
+#  print(num_step)
 
 model.learn(int(num_step))
 
